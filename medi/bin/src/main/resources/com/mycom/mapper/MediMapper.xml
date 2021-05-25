@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.mapper.MediMapper">
+
+<!--ppppppppppppppppppppppppppppppp  -->
+	<insert id="insertp">
+		insert into patient(patid, patpw, patname, temper, age, height, weight, sex, rash, mcheck)
+		 values(#{patid},#{patpw},#{patname},#{temper},#{age},#{height},#{weight},#{sex},#{rash},#{mcheck})
+	</insert>
+	<select id="getPlist" resultType="com.mycom.domain.PatientVO">
+		select * from patient
+	</select>
+	<delete id="deletep">
+		delete from patient
+		where patid = #{pid} and patpw=#{pwd}
+	</delete>
+	<update id="modp">
+		update patient set patpw = #{patpw}, patname=#{patname},
+		temper=#{temper},age=#{age},height=#{height},
+		weight=#{weight},sex=#{sex},rash=#{rash},mcheck=#{mcheck}
+		where patid=#{patid}
+	</update>
+	<select id="getp" resultType="com.mycom.domain.PatientVO">
+		select * from patient where patid=#{pid} and patpw=#{pwd}
+	</select>
+<!--pppppppppppppppppppppppppppp  -->
+<!--dddddddddddddddddddddddddddd  -->
+<insert id="insertd">
+	insert into doctor values(#{docid},#{docpw},#{docname})
+</insert>
+<select id="getDlist" resultType="com.mycom.domain.DoctorVO">
+	select docname from doctor
+</select>
+<delete id="deleted">
+	delete from doctor where docid=#{pid} and docpw=#{pwd}
+</delete>
+<update id="modd">
+	update doctor set docname=#{docname}, docpw=#{docpw}
+	where docid=#{docid}
+</update>
+<select id="getd" resultType="com.mycom.domain.DoctorVO">
+	select * from doctor where docid=#{pid} and docpw=#{pwd}
+</select>
+
+<!-- ddddddddddddddddddddddddddddddddddddddddddd -->
+</mapper>
